@@ -9,9 +9,9 @@ function Tarjeta (){
             <div className="descripcionPropiedad" >
                 <h6 className="tituloPropiedad"> Título de la Propiedad:</h6>
                 
-                <h6 className="ubicacionPropiedad"> Ubicación:<p></p></h6>
+                <h6 className="ubicacionPropiedad"> Ubicación:</h6>
                 
-                <h6 className="precioPropiedad"> Precio:<p></p></h6>
+                <h6 className="precioPropiedad"> Precio:    </h6>
                 
                 <button className="botonDetalles">Ver detalles:</button>
             </div>
