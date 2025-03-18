@@ -18,7 +18,8 @@ function Cabecera (){
                 <a href="">Contactanos</a>
             </nav>
             <div className='login'>
-                <img src={login} alt="Login" />
+                <a href=""><img src={login} alt="Login" /></a>
+                
             </div>
         </header>
     )

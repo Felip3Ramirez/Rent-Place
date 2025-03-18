@@ -2,6 +2,7 @@ import './ContenedorPrincipal.css'
 import Cabecera from "../components/Cabecera"
 import Tarjeta from '../components/Tarjeta'
 import PiePagina from '../components/PiePagina'
+import { propiedades } from '../services/DataBase'
 
 function ContenedorPrincipal(){
     return(
@@ -9,12 +10,12 @@ function ContenedorPrincipal(){
             <Cabecera></Cabecera>
             <main className='contenedorTarjetas'>
                 <h1>Explora alojamientos cerca de ti</h1>
-                <Tarjeta></Tarjeta>
-                <Tarjeta></Tarjeta>
-                <Tarjeta></Tarjeta>
-                <Tarjeta></Tarjeta>
-                <Tarjeta></Tarjeta>
-                <Tarjeta></Tarjeta>
+                {
+                    propiedades.map ((propiedad)=>{
+                        return <Tarjeta info={propiedad}></Tarjeta>
+                    })
+                }
+                
             </main>
             <footer>
                 <PiePagina></PiePagina>

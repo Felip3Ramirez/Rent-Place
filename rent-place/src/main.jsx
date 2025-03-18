@@ -8,6 +8,6 @@ import PaginaRegistroLogin from './pages/PaginaRegistroLogin'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ContenedorPrincipal></ContenedorPrincipal>
-    <PaginaRegistroLogin></PaginaRegistroLogin>
+    {/* <PaginaRegistroLogin></PaginaRegistroLogin> */}
   </StrictMode>,
 )
