@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.cabecera{
+    width: 100%;
+    height: 15vh;
+    /* border: 1px solid black;  */
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #EBEBEB;
+}   
+.logo  img{
+    width: 50%;
+}
+.barraBusqueda{
+    position: relative;
+    right: 20%;
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    /* border: 1px solid black;    */
+}
+.barraBusqueda input{
+    border-radius: 8px;
+    padding: 10px;
+    margin: 2px;
+    border: 1px solid #ccc;
+    
+}
+.navegacion{
+    position: relative;
+    right: 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+
+}
+.navegacion a{
+    text-decoration-line: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: #D92525;
+}
+.navegacion a:hover{
+    color: #FF0000;
+}
+.buscar{
+    background-color: #04404040 ;
+}
+.buscar:hover{
+    background-color: #04404080 ;   
+}
+.login{
+width: 10%;
+cursor: pointer;
+}
+.contenedorTarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+}
+.contenedorTarjetas h1{
+    width: 100%;
+    text-align: center;
+    font-weight: lighter;
+}
+.tarjeta{
+    border-radius: 6px;
+    margin: 3%;
+    /* border: solid 1px black; */
+    width: 20%;
+    height: 40vh;
+    box-shadow: 0px 0px 20px rgb(121, 121, 121) ;
+    transition: ease-in-out 0.3s;
+}
+.tarjeta:hover{
+    transition: ease-in-out 0.3s;
+    transform: scale(1.1);
+}
+
+.imagenPropiedad{
+    width: 100%;
+    height: 50%;
+    /* border:  solid 1px black; */
+    
+}
+.imagenPropiedad img{
+    height: 100%;
+    width: 100%;
+    
+}
+.descripcionPropiedad{
+    width: 100%;
+    height: 50%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.descripcionPropiedad,h6{
+    color: #D92525;
+    margin-left: 2%;
+}
+.botonDetalles{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    background-color: #D92525;
+    color: #EBEBEB;
+    border-radius: 3px;
+    padding: 2%;
+    border: none;
+    margin: 2%;
+}
+.botonDetalles:hover{
+    background-color: #ff0c0c;
+}
+.piePagina{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 15vh;
+    background-color: #EBEBEB;
+}
+.redes{
+    margin-right: 5%;
+    width: 16%;
+    display: flex;
+    justify-content: space-between;
+}
+.piePagina h2 {
+    font-weight: lighter;
+    margin-left: 5%;
+}
