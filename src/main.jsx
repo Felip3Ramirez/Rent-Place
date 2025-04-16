@@ -1,13 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { createBrowserRouter,RouterProvider } from 'react-router-dom'
+import { enrutador } from './routes/enrutador'
 
-import ContenedorPrincipal from './pages/ContenedorPrincipal'
-import PaginaRegistroLogin from './pages/PaginaRegistroLogin'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ContenedorPrincipal></ContenedorPrincipal>
-    <PaginaRegistroLogin></PaginaRegistroLogin> 
+    <RouterProvider router={createBrowserRouter(enrutador)}> </RouterProvider>
   </StrictMode>,
 )

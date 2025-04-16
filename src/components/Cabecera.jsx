@@ -1,5 +1,6 @@
 import logo from '../assets/logo.png'
 import login from '../assets/login.png'
+import { Link,useNavigate} from 'react-router-dom';
 
 function Cabecera (){
     return (
@@ -18,7 +19,7 @@ function Cabecera (){
                 <a href="">Contactanos</a>
             </nav>
             <div className='login'>
-                <a href=""><img src={login} alt="Login" /></a>
+                <Link to="/login"><img src={login} alt="Login"  /></Link>
                 
             </div>
         </header>
