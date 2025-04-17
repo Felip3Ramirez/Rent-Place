@@ -38,5 +38,5 @@ export let propiedades = [
         "ubicacion":"En lo profundo del Bosque Esmeralda",
         "precio": "2000 Bellotas por Mes",
         "detalles":"Reconecta con la naturaleza en esta encantadora comunidad forestal. La serenidad y la aventura te esperan"
-    }
+     }
 ]

@@ -1,10 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-.cabecera{
+
+.cabecera {
     width: 100%;
     height: 15vh;
     /* border: 1px solid black;  */
@@ -12,11 +13,13 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: #EBEBEB;
-}   
-.logo  img{
+}
+
+.logo img {
     width: 50%;
 }
-.barraBusqueda{
+
+.barraBusqueda {
     position: relative;
     right: 20%;
     display: flex;
@@ -24,14 +27,16 @@
     width: 30%;
     /* border: 1px solid black;    */
 }
-.barraBusqueda input{
+
+.barraBusqueda input {
     border-radius: 8px;
     padding: 10px;
     margin: 2px;
     border: 1px solid #ccc;
-    
+
 }
-.navegacion{
+
+.navegacion {
     position: relative;
     right: 10%;
     display: flex;
@@ -39,65 +44,140 @@
     width: 20%;
 
 }
-.navegacion a{
+
+.navegacion button {
     text-decoration-line: none;
+    border: none;
+    padding: 2%;
+    border-radius: 10px;
     font-size: 25px;
     font-weight: bold;
-    color: #D92525;
-    margin-left:10% ;
+    color: #EBEBEB;
+    background-color: #D92525;
+    margin-left: 10%;
 }
-.navegacion a:hover{
-    color: #FF0000;
+
+/* estilos de contactanos */
+.section_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
 }
-.buscar{
-    background-color: #04404040 ;
+
+.feed-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
 }
-.buscar:hover{
-    background-color: #04404080 ;   
+
+.feed-form input {
+    height: 54px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 15px;
+    border: none;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4B4B4B;
 }
-.login{
-width: 10%;
-cursor: pointer;
+.textArea{
+    height: 54px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 15px;
+    border: none;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4B4B4B;
 }
-.contenedorTarjetas{
+.textArea::placeholder{
+    color: #000000;
+    padding-top: 15px;
+}
+.button_submit:hover,
+.feed-form input:hover {
+    transform: scale(1.009);
+    box-shadow: 0px 0px 3px 0px #212529;
+}
+
+.button_submit {
+    width: 100%;
+    height: 54px;
+    font-size: 14px;
+    color: white;
+    background: red;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+.navegacion button:hover {
+    background-color: #FF0000;
+}
+
+.buscar {
+    background-color: #04404040;
+}
+
+.buscar:hover {
+    background-color: #04404080;
+}
+
+.login {
+    width: 10%;
+    cursor: pointer;
+}
+
+.contenedorTarjetas {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    
+
 }
-.contenedorTarjetas h1{
+
+.contenedorTarjetas h1 {
     width: 100%;
     text-align: center;
     font-weight: lighter;
 }
-.tarjeta{
+
+.tarjeta {
     border-radius: 6px;
     margin: 3%;
     /* border: solid 1px black; */
     width: 20%;
     height: 40vh;
-    box-shadow: 0px 0px 20px rgb(121, 121, 121) ;
-    transition: ease-in-out 0.3s;
-}
-.tarjeta:hover{
-    transition: ease-in-out 0.3s;
-    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgb(121, 121, 121);
+    /* transition: ease-in-out 0.3s; */
 }
 
-.imagenPropiedad{
+.tarjeta:hover {
+    /* transition: ease-in-out 0.3s; */
+    /* transform: scale(1.1); */
+}
+
+.imagenPropiedad {
     width: 100%;
     height: 50%;
     /* border:  solid 1px black; */
 }
-.imagenPropiedad img{
+
+.imagenPropiedad img {
     height: 100%;
     width: 100%;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    
+
 }
-.descripcionPropiedad{
+
+.descripcionPropiedad {
     width: 100%;
     height: 50%;
     text-align: left;
@@ -105,12 +185,14 @@ cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
 }
-.descripcionPropiedad h6{
+
+.descripcionPropiedad h6 {
     margin-top: 2%;
     color: #D92525;
     margin-left: 3%;
 }
-.botonDetalles{
+
+.botonDetalles {
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -122,10 +204,92 @@ cursor: pointer;
     border: none;
     margin: 2%;
 }
-.botonDetalles:hover{
+
+.botonDetalles:hover {
     background-color: #ff0c0c;
 }
-.piePagina{
+
+/* modal */
+.fondoModal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    padding: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100px;
+    background-color: #EBEBEB;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+}
+
+.encabezadoModal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.encabezadoModal h3 {
+    font-weight: 500;
+    font-size: 16px;
+    color: #D92525;
+}
+
+.botonCerrar {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 5px;
+    color: #D92525;
+}
+
+.botonCerrar:hover {
+    background-color: #ccc9c9;
+}
+
+.botonCerrar svg {
+    width: 100%;
+    height: 100%;
+}
+
+.botonFinal {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    background-color: #D92525;
+    color: #EBEBEB;
+    border-radius: 3px;
+    padding: 2%;
+    border: none;
+    margin: 2%;
+    margin-top: 30px;
+}
+
+.piePagina {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,12 +297,14 @@ cursor: pointer;
     height: 15vh;
     background-color: #EBEBEB;
 }
-.redes{
+
+.redes {
     margin-right: 5%;
     width: 16%;
     display: flex;
     justify-content: space-between;
 }
+
 .piePagina h2 {
     font-weight: lighter;
     margin-left: 5%;

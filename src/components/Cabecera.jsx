@@ -1,9 +1,14 @@
 import logo from '../assets/logo.png'
 import login from '../assets/login.png'
 import { Link } from 'react-router-dom';
-
+import Modal from './Modal';
+import { useState } from 'react';
+import FormularioContactanos from './FormularioContactanos';
+import FormularioPublicar from './FormularioPublicar';
 
 function Cabecera() {
+    const [modal, setModal] = useState(false);
+    const [modal2, setModal2] = useState(false);
     function cerrarSesion() {
         localStorage.removeItem("token");
     }
@@ -19,8 +24,25 @@ function Cabecera() {
 
             </div>
             <nav className="navegacion">
-                <a href="">Publicar</a>
-                <a href="">Contactanos</a>
+                <button onClick={()=>setModal(!modal)} >Publicar</button>
+                <Modal
+                estado={modal}
+                cambiarEstado={setModal}
+                titulo='Publica tu propiedad'
+                botonFinal="Publicar">
+                <FormularioPublicar></FormularioPublicar>
+                </Modal>
+
+
+                <button onClick={()=>setModal2(!modal2)} >Contactanos</button>
+                <Modal
+                estado={modal2}
+                cambiarEstado={setModal2}
+                titulo='Contactanos'
+                botonFinal="Enviar"
+                >
+                    <FormularioContactanos></FormularioContactanos>
+                </Modal>
             </nav>
             <div className='login'>
                 <Link onClick={cerrarSesion} to="/registro"> <img src={login} alt="Login" /></Link>

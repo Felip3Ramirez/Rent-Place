@@ -17,7 +17,7 @@ function PaginaLogin() {
             console.log(horaInicio);
             let tokenAcceso = generarToken();
             localStorage.setItem("token", tokenAcceso);
-            alertaRedireccion( redireccion,"Bienvenido", "Sera redieccionado a al pagina principal", "success","/");
+            alertaRedireccion( redireccion,"Bienvenido", "Sera redieccionado a la pagina principal", "success","/");
         } else {
             alertaGenerica("Error", "Usuario o contraseña incorrectos", "error");
         }
