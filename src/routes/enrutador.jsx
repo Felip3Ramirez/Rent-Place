@@ -1,10 +1,15 @@
 import ContenedorPrincipal from "../pages/ContenedorPrincipal";
-import PaginaRegistroLogin from "../pages/PaginaRegistroLogin";
+import PaginaLogin from "../pages/PaginaLogin";
+import PaginaRegistro from "../pages/PaginaRegistro";
 
 export let enrutador = [
     {
+        path: '/registro',
+        element: <PaginaRegistro />
+    },
+    {
         path: '/login',
-        element: <PaginaRegistroLogin />
+        element: <PaginaLogin />
     },
     {
         path: '/',

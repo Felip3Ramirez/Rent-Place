@@ -1,7 +1,7 @@
-import './PaginaRegistroLogin.css'
+import './PaginaRegistro.css'
 import imgRegistro from '../assets/imagenRegistro.png'
 import { Link } from 'react-router-dom';
-function PaginaRegistroLogin() {
+function PaginaRegistro() {
     return (
         <div className="contenedorRegistro">
             <div className="formularioRegistro">
@@ -15,7 +15,7 @@ function PaginaRegistroLogin() {
 
                 </form>
                 <Link to="/">Cancelar</Link>
-                <a href="">Ya tienes cuenta? Inicia sesion</a>
+                <Link to="/login">Ya tienes cuenta? Inicia sesion !</Link>
             </div>
             <div className='imagenRegistro'>
                 <img src={imgRegistro} alt="" />
@@ -24,4 +24,4 @@ function PaginaRegistroLogin() {
 
     )
 }
-export default PaginaRegistroLogin;
+export default PaginaRegistro;

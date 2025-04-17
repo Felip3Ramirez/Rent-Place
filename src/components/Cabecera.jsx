@@ -1,8 +1,12 @@
 import logo from '../assets/logo.png'
 import login from '../assets/login.png'
-import { Link,useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Cabecera (){
+
+function Cabecera() {
+    function cerrarSesion() {
+        localStorage.removeItem("token");
+    }
     return (
         <header className="cabecera">
             <div className="logo">
@@ -10,8 +14,8 @@ function Cabecera (){
             </div>
             <div className="barraBusqueda">
                 <input type="text" placeholder='Ubicacion' />
-                <input type="text" placeholder='Precio Minimo'/>
-                <input className='buscar' type="submit" value="Buscar"/>
+                <input type="text" placeholder='Precio Minimo' />
+                <input className='buscar' type="submit" value="Buscar" />
 
             </div>
             <nav className="navegacion">
@@ -19,8 +23,8 @@ function Cabecera (){
                 <a href="">Contactanos</a>
             </nav>
             <div className='login'>
-                <Link to="/login"><img src={login} alt="Login"  /></Link>
-                
+                <Link onClick={cerrarSesion} to="/registro"> <img src={login} alt="Login" /></Link>
+
             </div>
         </header>
     )
