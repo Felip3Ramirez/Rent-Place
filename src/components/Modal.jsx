@@ -1,3 +1,6 @@
+
+
+
 function Modal({ children, estado, cambiarEstado,titulo,botonFinal }) {
     return (
         <>
@@ -12,7 +15,7 @@ function Modal({ children, estado, cambiarEstado,titulo,botonFinal }) {
                         </svg>
                         </div>
                         {children}
-                        <button className="botonFinal">{botonFinal}</button>
+                        <button  className="botonFinal">{botonFinal}</button>
                     </div>
                 </div>
             }

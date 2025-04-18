@@ -36,3 +36,5 @@ export function alertaGenerica(titulo, texto, icono) {
         icon: icono,
     });
 }
+
+
