@@ -1,23 +1,40 @@
 import './PaginaLogin.css'
 import imgLogin from '../assets/imagenLogin.png'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { alertaGenerica, alertaRedireccion, generarToken } from "../helpers/funciones";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+let apiUsuarios = "https://back-json-server-tuya.onrender.com/usuarios";
 function PaginaLogin() {
-    const [telefono, setTelefono] = useState("")
+    const [usuarios, setUsuarios] = useState([]);
     const [password, setPassword] = useState("")
-    const [getHoraLogin, setHoraLogin] = useState("")
+    const [name, setName] = useState("")
 
     let redireccion = useNavigate()
 
-    function iniciarSesion(telefono, password) {
-        if (telefono === "313013" && password === "123456") {
-            setHoraLogin(new Date().toLocaleDateString())
-            let horaInicio = new Date();
-            console.log(horaInicio);
+    function getUsuarios() {
+        fetch(apiUsuarios)
+            .then((Response) => Response.json())
+            .then((data) => setUsuarios(data))
+            .catch((error) => console.log(error));
+
+    }
+    
+
+    useEffect(() => {
+        getUsuarios();
+    }, []);
+
+    function buscarUsuario() {
+        let user = usuarios.find((item) => name == item.user && password == item.password);
+        return user;
+    }
+
+    function iniciarSesion(e) {
+        e.preventDefault();
+        if (buscarUsuario()) {
             let tokenAcceso = generarToken();
             localStorage.setItem("token", tokenAcceso);
-            alertaRedireccion( redireccion,"Bienvenido", "Sera redieccionado a la pagina principal", "success","/");
+            alertaRedireccion(redireccion, "Bienvenido", "Sera redieccionado a la pagina principal", "success", "/");
         } else {
             alertaGenerica("Error", "Usuario o contraseña incorrectos", "error");
         }
@@ -32,9 +49,9 @@ function PaginaLogin() {
                 <h1>Inicio Sesion</h1>
 
                 <form className="formulario" action="">
-                    <input onChange={(e) => setTelefono(e.target.value)} type="text" placeholder="Telefono" />
+                    <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Usuario" />
                     <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Contrasena" />
-                    <button type='button' onClick={()=>iniciarSesion(telefono,password)}>Iniciar Sesion</button>
+                    <button type='button'  onClick={(e) => iniciarSesion(e)}>Iniciar Sesion</button>
 
                 </form>
                 <Link to="/">Cancelar</Link>

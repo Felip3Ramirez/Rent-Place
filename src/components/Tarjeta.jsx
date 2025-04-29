@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import imgPropiedad from '../assets/imagenPropiedad.png';
 import Modal from './Modal';
-
 function Tarjeta({ info }) {
     const [modal, setModal] = useState(false);
+    
     return (
         <div className="tarjeta">
             <div className="imagenPropiedad">
