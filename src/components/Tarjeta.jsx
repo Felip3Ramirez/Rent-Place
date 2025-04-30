@@ -19,11 +19,12 @@ function Tarjeta({ info }) {
                     estado={modal}
                     cambiarEstado={setModal}
                     titulo={info.nombre}
-                    botonFinal="Reservar"
+                    
                 >
                     <img src={imgPropiedad} alt="Imagen" />
                     <h6 className="ubicacionPropiedad"> Ubicacion: {info.ubicacion} <span></span></h6>
                     <h6 className="precioPropiedad"> Precio:{info.precio}</h6>
+                    <button  className="botonFinal">Reservar</button>
                 </Modal>
 
             </div>

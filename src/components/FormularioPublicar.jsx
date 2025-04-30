@@ -1,24 +1,54 @@
 import { useState } from "react";
+let apiUsuarios = "https://back-json-server-tuya.onrender.com/propiedades";
 
 
-
-function FormularioPublicar(){
-const [nombre , setNombre] = useState("");
-const [ubicacion, setUbicacion] = useState("");
-const [precio , setPrecio] = useState("");
-const [detalle , setDetalle] = useState("");
-const [foto , setFoto] = useState("");
+function FormularioPublicar({ cerrarModal }) {
+    const [nombre, setNombre] = useState("");
+    const [ubicacion, setUbicacion] = useState("");
+    const [precio, setPrecio] = useState("");
+    const [detalle, setDetalle] = useState("");
+    const [foto, setFoto] = useState("");
     
 
-    return(
+    function crearPropiedad(e) {
+        e.preventDefault();
+        if (!nombre.trim() || !precio.trim()) {
+            alert("Por favor, complete todos los campos sin espacios en blanco.");
+            return;
+        }
+        let data = {
+
+            id: crypto.randomUUID(),
+            nombre: nombre,
+            ubicacion: ubicacion,
+            precio: precio,
+            detalles: detalle
+        }
+        fetch(apiUsuarios, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                cerrarModal()})
+            .catch(error => console.log(error))
+            
+        
+    }
+
+    return (
         <section className="section_form">
             <form id="consultation-form" className="feed-form" action="#">
-                <input onChange={(e)=>setNombre(e.target.value)} required placeholder="Nombre Propiedad" type="text" />
-                <input onChange={(e)=>setUbicacion(e.target.value)} name="ubicacion" required placeholder="Ubicacion" type="text"/>
-                <input onChange={(e)=>setPrecio(e.target.value)} required placeholder="Precio por Dia" type="text" />
-                <input onChange={(e)=>setDetalle(e.target.value)} name="detalles" required placeholder="Detalles" type="text" />
-                <input onChange={(e)=>setFoto(e.target.value)} name= "fotoPropiedad"type="file" required placeholder="Fotos de propiedad"  />
-                
+                <input onChange={(e) => setNombre(e.target.value)} required placeholder="Nombre Propiedad" type="text" />
+                <input onChange={(e) => setUbicacion(e.target.value)} name="ubicacion" required placeholder="Ubicacion" type="text" />
+                <input onChange={(e) => setPrecio(e.target.value)} required placeholder="Precio por Dia" type="text" />
+                <input onChange={(e) => setDetalle(e.target.value)} name="detalles" required placeholder="Detalles" type="text" />
+                <input onChange={(e) => setFoto(e.target.value)} name="fotoPropiedad" type="file" required placeholder="Fotos de propiedad" />
+                <button onClick={(e)=>crearPropiedad(e)} className="botonFinal">Publicar</button>
+
             </form>
         </section>
     )

@@ -28,9 +28,8 @@ function Cabecera() {
                 <Modal
                 estado={modal}
                 cambiarEstado={setModal}
-                titulo='Publica tu propiedad'
-                botonFinal="Publicar">
-                <FormularioPublicar></FormularioPublicar>
+                titulo='Publica tu propiedad'>
+                <FormularioPublicar cerrarModal={() => setModal(false)}></FormularioPublicar>
                 </Modal>
 
 
@@ -38,10 +37,8 @@ function Cabecera() {
                 <Modal
                 estado={modal2}
                 cambiarEstado={setModal2}
-                titulo='Contactanos'
-                botonFinal="Enviar"
-                >
-                    <FormularioContactanos></FormularioContactanos>
+                titulo='Contactanos'>
+                    <FormularioContactanos cerrarModal={() => setModal(false)}></FormularioContactanos>
                 </Modal>
             </nav>
             <div className='login'>
