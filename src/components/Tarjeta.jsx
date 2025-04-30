@@ -21,7 +21,7 @@ function Tarjeta({ info }) {
                     titulo={info.nombre}
                     
                 >
-                    <img src={imgPropiedad} alt="Imagen" />
+                    <img className='imgModal' src={info.foto} alt="Imagen" />
                     <h6 className="ubicacionPropiedad"> Ubicacion: {info.ubicacion} <span></span></h6>
                     <h6 className="precioPropiedad"> Precio:{info.precio}</h6>
                     <button  className="botonFinal">Reservar</button>

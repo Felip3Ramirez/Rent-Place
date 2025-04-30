@@ -18,6 +18,10 @@
 .logo img {
     width: 50%;
 }
+.imgModal{
+    width: 100%;
+    height: 100%;
+}
 
 .barraBusqueda {
     position: relative;
