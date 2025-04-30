@@ -22,7 +22,8 @@ function FormularioPublicar({ cerrarModal }) {
             nombre: nombre,
             ubicacion: ubicacion,
             precio: precio,
-            detalles: detalle
+            detalles: detalle,
+            foto:foto
         }
         fetch(apiUsuarios, {
             method: "POST",
@@ -35,10 +36,18 @@ function FormularioPublicar({ cerrarModal }) {
             .then(data => {
                 cerrarModal()})
             .catch(error => console.log(error))
-            
-        
     }
 
+    function handleOnChangeFile(e){
+        const elemento = e.target;
+        const file = elemento.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+
+        reader.onloadend = function(){
+            setFoto(reader.result.toString());
+        }
+    }
     return (
         <section className="section_form">
             <form id="consultation-form" className="feed-form" action="#">
@@ -46,7 +55,7 @@ function FormularioPublicar({ cerrarModal }) {
                 <input onChange={(e) => setUbicacion(e.target.value)} name="ubicacion" required placeholder="Ubicacion" type="text" />
                 <input onChange={(e) => setPrecio(e.target.value)} required placeholder="Precio por Dia" type="text" />
                 <input onChange={(e) => setDetalle(e.target.value)} name="detalles" required placeholder="Detalles" type="text" />
-                <input onChange={(e) => setFoto(e.target.value)} name="fotoPropiedad" type="file" required placeholder="Fotos de propiedad" />
+                <input onChange={handleOnChangeFile} name="fotoPropiedad" type="file" required placeholder="Fotos de propiedad" />
                 <button onClick={(e)=>crearPropiedad(e)} className="botonFinal">Publicar</button>
 
             </form>

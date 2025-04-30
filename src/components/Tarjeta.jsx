@@ -7,7 +7,7 @@ function Tarjeta({ info }) {
     return (
         <div className="tarjeta">
             <div className="imagenPropiedad">
-                <img src={imgPropiedad} alt="Imagen" />
+                <img src={info.foto} alt="Imagen" />
             </div>
             <div className="descripcionPropiedad" >
                 <h6 className="tituloPropiedad"> {info.nombre}</h6>
