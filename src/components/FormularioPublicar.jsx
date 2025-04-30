@@ -12,6 +12,7 @@ function FormularioPublicar({ cerrarModal }) {
 
     function crearPropiedad(e) {
         e.preventDefault();
+        cerrarModal();
         if (!nombre.trim() || !precio.trim()) {
             alert("Por favor, complete todos los campos sin espacios en blanco.");
             return;
