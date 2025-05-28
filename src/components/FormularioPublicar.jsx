@@ -1,5 +1,5 @@
 import { useState } from "react";
-let apiUsuarios = "https://back-json-server-tuya.onrender.com/propiedades";
+let apiPropiedades = "https://back-json-server-tuya.onrender.com/propiedades";
 
 
 function FormularioPublicar({ cerrarModal }) {
@@ -12,7 +12,7 @@ function FormularioPublicar({ cerrarModal }) {
 
     function crearPropiedad(e) {
         e.preventDefault();
-        cerrarModal();
+        
         if (!nombre.trim() || !precio.trim()) {
             alert("Por favor, complete todos los campos sin espacios en blanco.");
             return;
@@ -26,7 +26,7 @@ function FormularioPublicar({ cerrarModal }) {
             detalles: detalle,
             foto:foto
         }
-        fetch(apiUsuarios, {
+        fetch(apiPropiedades, {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
