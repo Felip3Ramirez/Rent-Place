@@ -30,9 +30,9 @@ const navigate = useNavigate();
             }
         })
         .then (res => res.json())
-        .then (data => data)
+        .then (data => navigate("/login"))
         .catch(error => console.log(error))
-        navigate("/login");
+        ;
     }
 
     return (
