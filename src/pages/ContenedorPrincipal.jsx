@@ -24,7 +24,7 @@ function ContenedorPrincipal(){
         <div className="contenedorPrincipal">
             <Cabecera></Cabecera>
             <main className='contenedorTarjetas'>
-                <h1 >Explora alojamientos cerca de ti</h1>
+                <h1 onLoad={buscarPropiedades()} >Explora alojamientos cerca de ti</h1>
                 {
                     propiedades.map ((propiedad)=>{
                         return <Tarjeta info={propiedad}></Tarjeta>
