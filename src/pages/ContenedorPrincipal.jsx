@@ -3,13 +3,13 @@ import Cabecera from "../components/Cabecera"
 import Tarjeta from '../components/Tarjeta'
 import PiePagina from '../components/PiePagina'
 import { useEffect, useState } from 'react';
-let apiUsuarios = "https://back-json-server-tuya.onrender.com/propiedades";
+let apiPropiedades = "https://back-json-server-tuya.onrender.com/propiedades";
 
 function ContenedorPrincipal(){
     const [propiedades, setPropiedades] = useState([]);
 
     function buscarPropiedades() {
-        fetch(apiUsuarios)
+        fetch(apiPropiedades)
             .then((Response) => Response.json())
             .then((data) => setPropiedades(data))
             .catch((error) => console.log(error));

@@ -8,11 +8,11 @@ function FormularioPublicar({ cerrarModal }) {
     const [precio, setPrecio] = useState("");
     const [detalle, setDetalle] = useState("");
     const [foto, setFoto] = useState("");
-    
+
 
     function crearPropiedad(e) {
         e.preventDefault();
-        
+
         if (!nombre.trim() || !precio.trim()) {
             alert("Por favor, complete todos los campos sin espacios en blanco.");
             return;
@@ -24,8 +24,9 @@ function FormularioPublicar({ cerrarModal }) {
             ubicacion: ubicacion,
             precio: precio,
             detalles: detalle,
-            foto:foto
+            foto: foto
         }
+        
         fetch(apiPropiedades, {
             method: "POST",
             body: JSON.stringify(data),
@@ -34,18 +35,33 @@ function FormularioPublicar({ cerrarModal }) {
             }
         })
             .then(res => res.json())
-            .then(data => {
-                cerrarModal()})
+            .then(data =>
+                cerrarModal())
             .catch(error => console.log(error))
+
+            function buscarPropiedades() {
+                fetch(apiPropiedades)
+                    .then((Response) => Response.json())
+                    .then((data) => setPropiedades(data))
+                    .catch((error) => console.log(error));
+    
+            }
+            useEffect(() => {
+                buscarPropiedades();
+            }, []);
+
+            buscarPropiedades();
+        
     }
 
-    function handleOnChangeFile(e){
+
+    function handleOnChangeFile(e) {
         const elemento = e.target;
         const file = elemento.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(file)
 
-        reader.onloadend = function(){
+        reader.onloadend = function () {
             setFoto(reader.result.toString());
         }
     }
@@ -57,7 +73,7 @@ function FormularioPublicar({ cerrarModal }) {
                 <input onChange={(e) => setPrecio(e.target.value)} required placeholder="Precio por Dia" type="text" />
                 <input onChange={(e) => setDetalle(e.target.value)} name="detalles" required placeholder="Detalles" type="text" />
                 <input onChange={handleOnChangeFile} name="fotoPropiedad" type="file" required placeholder="Fotos de propiedad" />
-                <button onClick={(e)=>crearPropiedad(e)} className="botonFinal">Publicar</button>
+                <button onClick={(e) => crearPropiedad(e)} className="botonFinal">Publicar</button>
 
             </form>
         </section>

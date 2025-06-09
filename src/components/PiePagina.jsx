@@ -7,9 +7,9 @@ function PiePagina (){
         <div className="piePagina">
             <h2>Renta Place</h2>
             <div className="redes">
-                <img src={iconF} alt="" />
-                <img src={iconX} alt="" />
-                <img src={iconI} alt="" />
+                <img src={iconF} alt="Facebook" />
+                <img src={iconX} alt="X" />
+                <img src={iconI} alt="Instagram" />
 
             </div>
         </div>
