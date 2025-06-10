@@ -563,6 +563,9 @@ body {
 }
 
 .contenidoPrincipal {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     max-width: 300px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -647,6 +650,7 @@ body {
 }
 
 .cuerpoTabla {
+    
     divide-y: 1px solid #E8E8E8;
 }
 
@@ -951,5 +955,292 @@ body {
     .filaUsuario {
         padding: 15px;
         font-size: 12px;
+    }
+}
+/* Estilos para Gestión de Reservas */
+
+.tablaReservas {
+    width: 90vh;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.encabezadoTablaReservas {
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    color: white;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 150px;
+    gap: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.filaReserva {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 150px;
+    gap: 20px;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.filaReserva:hover {
+    background-color: rgba(217, 37, 37, 0.05);
+}
+
+.filaReserva:last-child {
+    border-bottom: none;
+}
+
+.celdaReserva {
+    color: #4B4B4B;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.estadoReservaActiva {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.estadoReservaFinalizada {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.accionesReserva {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.botonEliminarReserva {
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 37, 37, 0.3);
+    transition: all 0.2s ease;
+}
+
+.botonEliminarReserva:hover {
+    background: linear-gradient(135deg, #c82333, #a71e2a);
+    box-shadow: 0 6px 20px rgba(217, 37, 37, 0.4);
+    transform: translateY(-1px);
+}
+
+.barraBusquedaReservas {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.inputBuscadorReservas {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px 20px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    color: #4B4B4B;
+    transition: all 0.3s ease;
+}
+
+.inputBuscadorReservas:focus {
+    outline: none;
+    border-color: #D92525;
+    box-shadow: 0 0 15px rgba(217, 37, 37, 0.3);
+}
+
+.inputBuscadorReservas::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.resumenReservas {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.resumenReservas h3 {
+    color: #D92525;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resumenReservas p {
+    color: #4B4B4B;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.resumenReservas p:last-child {
+    border-bottom: none;
+}
+
+.resumenReservas p strong {
+    color: #D92525;
+    font-weight: 600;
+}
+
+.mensajeVacioReservas {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    font-style: italic;
+    font-size: 16px;
+    background: rgba(248, 249, 250, 0.8);
+}
+
+.cargandoReservas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #D92525;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Responsive para Gestión de Reservas */
+@media (max-width: 1200px) {
+    .encabezadoTablaReservas,
+    .filaReserva {
+        grid-template-columns: 1fr 1fr 1fr 1fr 0.8fr 120px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .encabezadoTablaReservas,
+    .filaReserva {
+        grid-template-columns: 1fr 1fr 0.8fr 0.8fr 0.6fr 110px;
+        gap: 12px;
+        padding: 15px;
+        font-size: 13px;
+    }
+    
+    .inputBuscadorReservas {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tablaReservas {
+        overflow-x: auto;
+    }
+    
+    .encabezadoTablaReservas,
+    .filaReserva {
+        grid-template-columns: 150px 150px 120px 120px 100px 100px;
+        min-width: 740px;
+        gap: 10px;
+        padding: 12px;
+        font-size: 12px;
+    }
+    
+    .inputBuscadorReservas {
+        width: 95%;
+        max-width: 300px;
+        padding: 12px 18px;
+        font-size: 13px;
+    }
+    
+    .resumenReservas {
+        padding: 20px;
+    }
+    
+    .resumenReservas h3 {
+        font-size: 18px;
+    }
+    
+    .resumenReservas p {
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .botonEliminarReserva {
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezadoTablaReservas,
+    .filaReserva {
+        grid-template-columns: 130px 130px 100px 100px 80px 90px;
+        min-width: 630px;
+        gap: 8px;
+        padding: 10px;
+        font-size: 11px;
+    }
+    
+    .inputBuscadorReservas {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .resumenReservas {
+        padding: 15px;
+    }
+    
+    .resumenReservas h3 {
+        font-size: 16px;
+    }
+    
+    .resumenReservas p {
+        font-size: 12px;
+    }
+    
+    .botonEliminarReserva {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    
+    .estadoReservaActiva,
+    .estadoReservaFinalizada {
+        padding: 4px 8px;
+        font-size: 10px;
     }
 }

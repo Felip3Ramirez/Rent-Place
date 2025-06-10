@@ -171,6 +171,7 @@ function GestionUsuarios() {
                 </div>
                 <div className="navegacionGestion">
                     <Link className='button' to={"/"}>Inicio</Link>
+                    <Link className='button' to={"/reserva"} >Reservas</Link>
                 </div>
             </div>
 

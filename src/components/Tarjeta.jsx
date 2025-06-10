@@ -50,28 +50,67 @@ function Tarjeta({ info, idUsuario, idPropiedad, alEliminarPropiedad }) { // Agr
     }
 
     function eliminarPropiedad(id) {
-        fetch(apiPropiedad+"/"+id, {
+        // Validar que el ID existe y es válido
+        if (!id || id === undefined || id === null) {
+            console.error("ID de propiedad inválido:", id);
+            alert("Error: ID de propiedad no válido");
+            return;
+        }
+    
+        // Confirmar eliminación
+        if (!confirm(`¿Está seguro de que desea eliminar la propiedad "${info.nombre}"?`)) {
+            return;
+        }
+    
+        console.log("Intentando eliminar propiedad con ID:", id);
+        console.log("URL completa:", `${apiPropiedad}/${id}`);
+    
+        fetch(`${apiPropiedad}/${id}`, {
             method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                // Si tu API requiere autenticación, agregar aquí
+                // "Authorization": `Bearer ${token}`
+            }
         })
         .then(res => {
+            console.log("Respuesta del servidor:", res.status, res.statusText);
+            
             if (res.ok) {
                 console.log("Propiedad eliminada con éxito");
+                alert("Propiedad eliminada exitosamente");
                 setModal(false);
                 // Llamar a la función callback para actualizar el componente padre
                 if (alEliminarPropiedad) {
                     alEliminarPropiedad(id);
                 }
             } else {
-                console.error("Error al eliminar la propiedad:", res.status);
-                alert("Error al eliminar la propiedad");
+                // Intentar obtener más detalles del error
+                return res.text().then(errorText => {
+                    console.error("Error del servidor:", res.status, errorText);
+                    
+                    // Mensajes de error más específicos
+                    switch(res.status) {
+                        case 400:
+                            alert("Error: Solicitud inválida. La propiedad podría tener reservas activas.");
+                            break;
+                        case 404:
+                            alert("Error: Propiedad no encontrada.");
+                            break;
+                        case 403:
+                            alert("Error: No tiene permisos para eliminar esta propiedad.");
+                            break;
+                        default:
+                            alert(`Error al eliminar la propiedad: ${res.status} - ${errorText}`);
+                    }
+                });
             }
         })
         .catch(error => {
-            console.error("Error al eliminar la propiedad:", error);
-            alert("Error al eliminar la propiedad");
+            console.error("Error de red al eliminar la propiedad:", error);
+            alert("Error de conexión. Verifique su conexión a internet.");
         });
     }
-
     return (
         <div className="tarjeta">
             <div className="imagenPropiedad">

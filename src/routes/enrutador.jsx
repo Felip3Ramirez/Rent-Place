@@ -1,3 +1,4 @@
+import GestionReservas from "../components/GestionReservas";
 import GestionUsuarios from "../components/GestionUsuarios";
 import ContenedorPrincipal from "../pages/ContenedorPrincipal";
 import PaginaLogin from "../pages/PaginaLogin";
@@ -11,6 +12,10 @@ export let enrutador = [
     {
         path:'/gestion',
         element: <GestionUsuarios></GestionUsuarios>
+    },
+    {
+        path:'/reserva',
+        element: <GestionReservas></GestionReservas>
     },
     {
         path: '/login',
