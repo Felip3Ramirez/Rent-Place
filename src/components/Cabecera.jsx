@@ -13,11 +13,15 @@ function Cabecera({ actualizarPropiedades }) {
     // Obtener usuario actual desde localStorage
     const usuarioActual = JSON.parse(localStorage.getItem("usuario"));
     const esAdmin = usuarioActual && usuarioActual.username === "admin";
+    const hayUsuarioLogueado = usuarioActual !== null; // Verificar si hay usuario logueado
 
     function cerrarSesion() {
         localStorage.removeItem("token");
-        localStorage.removeItem("usuario"); 
+        localStorage.removeItem("usuario");
+        // Opcional: recargar la página para actualizar el estado
+        window.location.reload();
     }
+
     return (
         <header className="cabecera">
             <div className="logo">
@@ -51,12 +55,19 @@ function Cabecera({ actualizarPropiedades }) {
             
             <div className='seccionUsuario'>
                 <div className='login'>
-                    <Link onClick={cerrarSesion} to="/registro">
-                        <img src={login} alt="Login" />
-                    </Link>
+                    {hayUsuarioLogueado ? (
+                        // Si hay usuario logueado, mostrar botón de cerrar sesión
+                        <Link  onClick={cerrarSesion} className='cerrarSesion'>
+                            Cerrar Sesión
+                        </Link>
+                    ) : (
+                        // Si no hay usuario logueado, mostrar enlace de login
+                        <Link className='login' to="/registro">
+                            <img src={login} alt="Login" />
+                        </Link>
+                    )}
                 </div>
                 
-                {/* Botón de gestión de usuarios - solo visible para admin */}
                 {esAdmin && (
                     <div className='gestionUsuarios'>
                         <Link to={"gestion"} className='botonGestion'>
