@@ -2,7 +2,7 @@ import './PaginaRegistro.css'
 import imgRegistro from '../assets/imagenRegistro.png'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-let apiUsuarios = "https://back-json-server-tuya.onrender.com/usuarios";
+let apiUsuarios = "http://localhost:8080/usuario";
 import { useNavigate } from 'react-router-dom';
 
 function PaginaRegistro() {
@@ -17,9 +17,8 @@ const navigate = useNavigate();
             return;
         }
         let data ={
-            id:crypto.randomUUID(),
             nombre:nombre,
-            user:usuario,
+            username:usuario,
             password:password
         }
         fetch(apiUsuarios, {

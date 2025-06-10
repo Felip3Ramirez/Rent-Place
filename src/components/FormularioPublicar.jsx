@@ -1,83 +1,142 @@
 import { useState } from "react";
-let apiPropiedades = "https://back-json-server-tuya.onrender.com/propiedades";
 
+const apiPropiedades = "http://localhost:8080/propiedad";
 
-function FormularioPublicar({ cerrarModal }) {
+function FormularioPublicar({ cerrarModal, actualizarLista }) {
     const [nombre, setNombre] = useState("");
     const [ubicacion, setUbicacion] = useState("");
     const [precio, setPrecio] = useState("");
     const [detalle, setDetalle] = useState("");
     const [foto, setFoto] = useState("");
-
+    const [cargando, setCargando] = useState(false);
 
     function crearPropiedad(e) {
         e.preventDefault();
 
-        if (!nombre.trim() || !precio.trim()) {
-            alert("Por favor, complete todos los campos sin espacios en blanco.");
+        // Validación mejorada
+        if (!nombre.trim() || !ubicacion.trim() || !precio.trim() || !detalle.trim()) {
+            alert("Por favor, complete todos los campos obligatorios.");
             return;
         }
-        let data = {
 
-            id: crypto.randomUUID(),
-            nombre: nombre,
-            ubicacion: ubicacion,
-            precio: precio,
-            detalles: detalle,
-            foto: foto
-        }
+        setCargando(true);
+
         
+        const data = {
+            nombre: nombre.trim(),
+            ubicacion: ubicacion.trim(),
+            precio: parseFloat(precio.trim()),
+            detalles: detalle.trim(),
+            foto: foto
+        };
+
+
         fetch(apiPropiedades, {
             method: "POST",
-            body: JSON.stringify(data),
             headers: {
-                "Content-Type": "application/json"
-            }
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(data)
         })
-            .then(res => res.json())
-            .then(data =>
-                cerrarModal())
-            .catch(error => console.log(error))
-
-            function buscarPropiedades() {
-                fetch(apiPropiedades)
-                    .then((Response) => Response.json())
-                    .then((data) => setPropiedades(data))
-                    .catch((error) => console.log(error));
-    
-            }
-            useEffect(() => {
-                buscarPropiedades();
-            }, []);
-
-            buscarPropiedades();
-        
+        .then(data => {
+            alert("Propiedad publicada exitosamente!");
+            actualizarLista();
+            cerrarModal();
+        })
+        .catch(error => {
+            console.error("Error completo:", error);
+            alert("Error al publicar propiedad: " + error.message);
+        })
+        .finally(() => {
+            setCargando(false);
+        });
     }
-
 
     function handleOnChangeFile(e) {
         const elemento = e.target;
         const file = elemento.files[0];
+        
+        if (!file) return;
+        
+        // Validar tipo de archivo (opcional)
+        if (!file.type.startsWith('image/')) {
+            alert("Por favor seleccione un archivo de imagen válido.");
+            return;
+        }
+        
+
+        
         const reader = new FileReader();
-        reader.readAsDataURL(file)
+        reader.readAsDataURL(file);
 
         reader.onloadend = function () {
             setFoto(reader.result.toString());
-        }
+        };
+        
+        reader.onerror = function () {
+            alert("Error al leer el archivo de imagen.");
+        };
     }
+
     return (
         <section className="section_form">
-            <form id="consultation-form" className="feed-form" action="#">
-                <input onChange={(e) => setNombre(e.target.value)} required placeholder="Nombre Propiedad" type="text" />
-                <input onChange={(e) => setUbicacion(e.target.value)} name="ubicacion" required placeholder="Ubicacion" type="text" />
-                <input onChange={(e) => setPrecio(e.target.value)} required placeholder="Precio por Dia" type="text" />
-                <input onChange={(e) => setDetalle(e.target.value)} name="detalles" required placeholder="Detalles" type="text" />
-                <input onChange={handleOnChangeFile} name="fotoPropiedad" type="file" required placeholder="Fotos de propiedad" />
-                <button onClick={(e) => crearPropiedad(e)} className="botonFinal">Publicar</button>
-
+            <form id="consultation-form" className="feed-form" onSubmit={crearPropiedad}>
+                <input 
+                    onChange={(e) => setNombre(e.target.value)} 
+                    value={nombre}
+                    required 
+                    placeholder="Nombre Propiedad" 
+                    type="text"
+                    disabled={cargando}
+                />
+                <input 
+                    onChange={(e) => setUbicacion(e.target.value)} 
+                    value={ubicacion}
+                    name="ubicacion" 
+                    required 
+                    placeholder="Ubicacion" 
+                    type="text"
+                    disabled={cargando}
+                />
+                <input 
+                    onChange={(e) => setPrecio(e.target.value)} 
+                    value={precio}
+                    required 
+                    placeholder="Precio por Dia" 
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    disabled={cargando}
+                />
+                <input 
+                    onChange={(e) => setDetalle(e.target.value)} 
+                    value={detalle}
+                    name="detalles" 
+                    required 
+                    placeholder="Detalles" 
+                    type="text"
+                    disabled={cargando}
+                />
+                <input 
+                    onChange={handleOnChangeFile} 
+                    name="fotoPropiedad" 
+                    type="file" 
+                    accept="image/*"
+                    required 
+                    placeholder="Fotos de propiedad"
+                    disabled={cargando}
+                />
+                <button 
+                    type="submit" 
+                    className="botonFinal"
+                    disabled={cargando}
+                >
+                    {cargando ? "Publicando..." : "Publicar"}
+                </button>
             </form>
         </section>
-    )
+    );
 }
 
 export default FormularioPublicar;

@@ -3,10 +3,12 @@ import Cabecera from "../components/Cabecera"
 import Tarjeta from '../components/Tarjeta'
 import PiePagina from '../components/PiePagina'
 import { useEffect, useState } from 'react';
-let apiPropiedades = "https://back-json-server-tuya.onrender.com/propiedades";
+import FormularioPublicar from '../components/FormularioPublicar';
+let apiPropiedades = "http://localhost:8080/propiedad";
 
 function ContenedorPrincipal(){
     const [propiedades, setPropiedades] = useState([]);
+    
 
     function buscarPropiedades() {
         fetch(apiPropiedades)
@@ -22,9 +24,9 @@ function ContenedorPrincipal(){
     
     return(
         <div className="contenedorPrincipal">
-            <Cabecera></Cabecera>
+            <Cabecera actualizarPropiedades={buscarPropiedades}></Cabecera>
             <main className='contenedorTarjetas'>
-                <h1 onLoad={buscarPropiedades()} >Explora alojamientos cerca de ti</h1>
+                <h1>Explora alojamientos cerca de ti</h1>
                 {
                     propiedades.map ((propiedad)=>{
                         return <Tarjeta info={propiedad}></Tarjeta>

@@ -3,7 +3,7 @@ import imgLogin from '../assets/imagenLogin.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { alertaGenerica, alertaRedireccion, generarToken } from "../helpers/funciones";
 import { useState, useEffect } from 'react';
-let apiUsuarios = "https://back-json-server-tuya.onrender.com/usuarios";
+let apiUsuarios = "http://localhost:8080/usuario";
 function PaginaLogin() {
     const [usuarios, setUsuarios] = useState([]);
     const [password, setPassword] = useState("")
@@ -25,7 +25,7 @@ function PaginaLogin() {
     }, []);
 
     function buscarUsuario() {
-        let user = usuarios.find((item) => name == item.user && password == item.password);
+        let user = usuarios.find((item) => name == item.username && password == item.password);
         return user;
     }
 

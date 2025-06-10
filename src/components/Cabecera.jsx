@@ -6,7 +6,7 @@ import { useState } from 'react';
 import FormularioContactanos from './FormularioContactanos';
 import FormularioPublicar from './FormularioPublicar';
 
-function Cabecera() {
+function Cabecera({ actualizarPropiedades }) {
     const [modal, setModal] = useState(false);
     const [modal2, setModal2] = useState(false);
     function cerrarSesion() {
@@ -29,7 +29,7 @@ function Cabecera() {
                 estado={modal}
                 cambiarEstado={setModal}
                 titulo='Publica tu propiedad'>
-                <FormularioPublicar cerrarModal={() => setModal(false)}></FormularioPublicar>
+                <FormularioPublicar cerrarModal={() => setModal(false) }actualizarLista={actualizarPropiedades}></FormularioPublicar>
                 </Modal>
 
 
