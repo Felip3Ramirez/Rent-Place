@@ -9,7 +9,7 @@ const FormularioContactanos = () => {
                 <input name="phone" required placeholder="Telefono" />
                 <input name="email" required placeholder="Correo" type="email" />
                 <textarea className='textArea' name="" id="" cols="30" rows="10" placeholder="Mensaje"></textarea>
-                <button  className="botonFinal">Publicar</button>
+                <button  className="botonFinal">Enviar</button>
             </form>
         </section>
     );

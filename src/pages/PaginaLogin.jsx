@@ -34,6 +34,7 @@ function PaginaLogin() {
         if (buscarUsuario()) {
             let tokenAcceso = generarToken();
             localStorage.setItem("token", tokenAcceso);
+            localStorage.setItem("usuario", JSON.stringify(buscarUsuario()));
             alertaRedireccion(redireccion, "Bienvenido", "Sera redieccionado a la pagina principal", "success", "/");
         } else {
             alertaGenerica("Error", "Usuario o contraseña incorrectos", "error");
