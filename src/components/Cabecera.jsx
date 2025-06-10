@@ -9,8 +9,14 @@ import FormularioPublicar from './FormularioPublicar';
 function Cabecera({ actualizarPropiedades }) {
     const [modal, setModal] = useState(false);
     const [modal2, setModal2] = useState(false);
+
+    // Obtener usuario actual desde localStorage
+    const usuarioActual = JSON.parse(localStorage.getItem("usuario"));
+    const esAdmin = usuarioActual && usuarioActual.username === "admin";
+
     function cerrarSesion() {
         localStorage.removeItem("token");
+        localStorage.removeItem("usuario"); 
     }
     return (
         <header className="cabecera">
@@ -21,31 +27,46 @@ function Cabecera({ actualizarPropiedades }) {
                 <input type="text" placeholder='Ubicacion' />
                 <input type="text" placeholder='Precio Minimo' />
                 <input className='buscar' type="submit" value="Buscar" />
-
             </div>
             <nav className="navegacion">
-                <button onClick={()=>setModal(!modal)} >Publicar</button>
+                <button onClick={() => setModal(!modal)}>Publicar</button>
                 <Modal
-                estado={modal}
-                cambiarEstado={setModal}
-                titulo='Publica tu propiedad'>
-                <FormularioPublicar cerrarModal={() => setModal(false) }actualizarLista={actualizarPropiedades}></FormularioPublicar>
+                    estado={modal}
+                    cambiarEstado={setModal}
+                    titulo='Publica tu propiedad'>
+                    <FormularioPublicar 
+                        cerrarModal={() => setModal(false)} 
+                        actualizarLista={actualizarPropiedades}>
+                    </FormularioPublicar>
                 </Modal>
 
-
-                <button onClick={()=>setModal2(!modal2)} >Contactanos</button>
+                <button onClick={() => setModal2(!modal2)}>Contactanos</button>
                 <Modal
-                estado={modal2}
-                cambiarEstado={setModal2}
-                titulo='Contactanos'>
-                    <FormularioContactanos cerrarModal={() => setModal(false)}></FormularioContactanos>
+                    estado={modal2}
+                    cambiarEstado={setModal2}
+                    titulo='Contactanos'>
+                    <FormularioContactanos cerrarModal2={() => setModal2(false)}></FormularioContactanos>
                 </Modal>
             </nav>
-            <div className='login'>
-                <Link onClick={cerrarSesion} to="/registro"> <img src={login} alt="Login" /></Link>
-
+            
+            <div className='seccionUsuario'>
+                <div className='login'>
+                    <Link onClick={cerrarSesion} to="/registro">
+                        <img src={login} alt="Login" />
+                    </Link>
+                </div>
+                
+                {/* Botón de gestión de usuarios - solo visible para admin */}
+                {esAdmin && (
+                    <div className='gestionUsuarios'>
+                        <Link to={"gestion"} className='botonGestion'>
+                            Gestión de usuarios
+                        </Link>
+                    </div>
+                )}
             </div>
         </header>
     )
 }
+
 export default Cabecera;

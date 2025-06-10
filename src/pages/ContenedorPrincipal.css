@@ -26,7 +26,7 @@ body {
 
 .imgModal {
     width: 100%;
-    height: 100%;
+    height: 30vh;
     border-radius: 8px;
 }
 
@@ -271,6 +271,15 @@ body {
     font-size: 16px;
     font-weight: 600;
 }
+.fechasReserva{
+    display: contents;
+    
+}
+.botonesAdmin{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
 
 .botonDetalles {
     cursor: pointer;
@@ -452,5 +461,495 @@ body {
     .feed-form {
         width: 90%;
         max-width: 300px;
+    }
+}
+/* Agregar estos estilos a tu archivo CSS existente */
+
+.seccionUsuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.login {
+    width: 40px; /* Ajustado para mejor proporción */
+    cursor: pointer;
+}
+
+.gestionUsuarios {
+    display: flex;
+    justify-content: center;
+}
+
+.botonGestion {
+    background: linear-gradient(135deg, #8C1F28, #D92525);
+    color: #EBEBEB;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(140, 31, 40, 0.3);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.botonGestion:hover {
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    box-shadow: 0 6px 20px rgba(140, 31, 40, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Responsive para el nuevo diseño */
+@media (max-width: 768px) {
+    .seccionUsuario {
+        margin-top: 10px;
+    }
+    
+    .botonGestion {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+}
+/* Estilos para Gestión de Usuarios */
+
+.contenedorGestion {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8C1F28 0%, #591C21 100%);
+}
+
+.cabeceraGestion {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: linear-gradient(135deg, #D92525 0%, #8C1F28 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tituloSistema {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navegacionGestion {
+    display: flex;
+    gap: 15px;
+}
+
+.navegacionGestion .button {
+    background: linear-gradient(135deg, #D92525, #591C21);
+    color: #EBEBEB;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 37, 37, 0.3);
+    transition: all 0.3s ease;
+}
+
+.navegacionGestion .button:hover {
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    box-shadow: 0 6px 20px rgba(217, 37, 37, 0.4);
+    transform: translateY(-2px);
+}
+
+.contenidoPrincipal {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.tituloGestion {
+    font-size: 2.5rem;
+    font-weight: lighter;
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #fffafa, #f5858f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sectionBuscador {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.inputBuscador {
+    width: 320px;
+    padding: 15px 20px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    color: #4B4B4B;
+}
+
+.inputBuscador:focus {
+    outline: none;
+    border-color: #D92525;
+    box-shadow: 0 0 15px rgba(217, 37, 37, 0.3);
+}
+
+.sectionAgregar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.botonAgregar {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    transition: all 0.3s ease;
+}
+
+.botonAgregar:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+    transform: translateY(-2px);
+}
+
+.tablaUsuarios {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.encabezadoTabla {
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    color: white;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.cuerpoTabla {
+    divide-y: 1px solid #E8E8E8;
+}
+
+.filaUsuario {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.filaUsuario:hover {
+    background-color: rgba(217, 37, 37, 0.05);
+}
+
+.celdaUsuario {
+    color: #4B4B4B;
+    font-size: 14px;
+}
+
+.estadoActivo {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.estadoInactivo {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.accionesUsuario {
+    display: flex;
+    gap: 10px;
+}
+
+.botonEditar {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+.botonEditar:hover {
+    background: linear-gradient(135deg, #0056b3, #004085);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.botonEliminar {
+    background: linear-gradient(135deg, #D92525, #8C1F28);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217, 37, 37, 0.3);
+    transition: all 0.2s ease;
+}
+
+.botonEliminar:hover {
+    background: linear-gradient(135deg, #c82333, #a71e2a);
+    box-shadow: 0 6px 20px rgba(217, 37, 37, 0.4);
+    transform: translateY(-1px);
+}
+
+.mensajeVacio {
+    padding: 40px;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    font-size: 16px;
+}
+
+/* Modal específico para usuarios */
+.modalUsuarios {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100px;
+    background-color: white;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+.encabezadoModalUsuarios {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+    width: 100%;
+}
+
+.tituloModal {
+    font-weight: 500;
+    font-size: 20px;
+    color: #D92525;
+}
+
+.formularioUsuario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.inputFormulario {
+    height: 54px;
+    width: 100%;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid #8C1F28;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4B4B4B;
+    transition: all 0.3s ease;
+}
+
+.inputFormulario:focus {
+    outline: none;
+    border-color: #D92525;
+    box-shadow: 0 0 10px rgba(217, 37, 37, 0.2);
+}
+
+.selectFormulario {
+    height: 54px;
+    width: 100%;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid #8C1F28;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #4B4B4B;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.selectFormulario:focus {
+    outline: none;
+    border-color: #D92525;
+    box-shadow: 0 0 10px rgba(217, 37, 37, 0.2);
+}
+
+.botonesModal {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.botonGuardar {
+    flex: 1;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botonGuardar:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+}
+
+.botonCancelar {
+    flex: 1;
+    background: linear-gradient(135deg, #6c757d, #495057);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botonCancelar:hover {
+    background: linear-gradient(135deg, #545b62, #343a40);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.3);
+}
+
+/* Responsive para gestión de usuarios */
+@media (max-width: 1024px) {
+    .contenidoPrincipal {
+        padding: 20px 15px;
+    }
+    
+    .encabezadoTabla,
+    .filaUsuario {
+        grid-template-columns: 1fr 1fr 0.8fr 0.8fr 1fr;
+        gap: 15px;
+    }
+    
+    .inputBuscador {
+        width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cabeceraGestion {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .navegacionGestion {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .navegacionGestion button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .tituloGestion {
+        font-size: 2rem;
+    }
+    
+    .inputBuscador {
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .tablaUsuarios {
+        overflow-x: auto;
+    }
+    
+    .encabezadoTabla,
+    .filaUsuario {
+        grid-template-columns: 150px 200px 100px 100px 150px;
+        min-width: 700px;
+    }
+    
+    .modalUsuarios {
+        width: 90%;
+        max-width: 400px;
+        margin: 20px;
+    }
+    
+    .botonesModal {
+        flex-direction: column;
+    }
+    
+    .accionesUsuario {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .botonEditar,
+    .botonEliminar {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tituloGestion {
+        font-size: 1.5rem;
+    }
+    
+    .botonAgregar {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+    
+    .encabezadoTabla,
+    .filaUsuario {
+        padding: 15px;
+        font-size: 12px;
     }
 }
